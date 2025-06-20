@@ -1,0 +1,508 @@
+[
+  {
+    "question": "Which 5 companies have the highest average engagement rate (Likes + Comments) per Facebook post? (CompanyFacebookDetail, CompanyInfo)",
+    "sql_query": "SELECT TOP 5 ci.Name, AVG(cfd.Likes + cfd.Comments) AS AverageEngagement FROM CompanyFacebookDetail cfd JOIN CompanyInfo ci ON cfd.CompanyInfoId = ci.Id GROUP BY ci.Name ORDER BY AverageEngagement DESC;",
+    "summary": "Apple Inc. leads with an average engagement of 38,957 per Facebook post, followed by Peacock TV LLC at 25,376 and Google India at 24,120.",
+    "raw_data": [
+      {
+        "Name": "Apple Inc.",
+        "AverageEngagement": 38957
+      },
+      {
+        "Name": "Peacock TV LLC",
+        "AverageEngagement": 25376
+      },
+      {
+        "Name": "Google India",
+        "AverageEngagement": 24120
+      },
+      {
+        "Name": "Etihad Airways",
+        "AverageEngagement": 19767
+      },
+      {
+        "Name": "ICICI Bank",
+        "AverageEngagement": 19644
+      }
+    ]
+  },
+  {
+    "question": "For the top vendor 'Leidos Holdings', what are the top 5 customer industries they have deals with? (CompanyDealMaster)",
+    "sql_query": "SELECT TOP 5 CustomerIndustry, COUNT(Id) AS DealCount FROM CompanyDealMaster WHERE VendorParent = 'Leidos Holdings' GROUP BY CustomerIndustry ORDER BY DealCount DESC;",
+    "summary": "Leidos Holdings' top customer industries are predominantly Public Sector and Government with 119 deals, followed by Healthcare with 4 deals, and then Transportation & Logistics and Business Services, each with 1 deal.",
+    "raw_data": [
+      {
+        "CustomerIndustry": "Public Sector and Government",
+        "DealCount": 119
+      },
+      {
+        "CustomerIndustry": "Healthcare",
+        "DealCount": 4
+      },
+      {
+        "CustomerIndustry": "Transportation & Logistics",
+        "DealCount": 1
+      },
+      {
+        "CustomerIndustry": "Business Services",
+        "DealCount": 1
+      }
+    ]
+  },
+  {
+    "question": "What are the top 5 technologies used by companies headquartered in 'North America - Group I'? (CompanyInfo, CompanyTechStack, LookUpValue)",
+    "sql_query": "SELECT TOP 5 cts.Technology, COUNT(cts.Id) AS UsageCount FROM CompanyTechStack cts JOIN CompanyInfo ci ON cts.CompanyInfoId = ci.Id JOIN LookUpValue l ON ci.Geography = l.Id WHERE l.Value = 'North America - Group I' GROUP BY cts.Technology ORDER BY UsageCount DESC;",
+    "summary": "The top technologies used by companies headquartered in 'North America - Group I' include Machine Learning Software / Microsoft Bing (317 usages), Iphone / Mobile Compatible (313 usages), and Gstatic Google Static Content (262 usages).",
+    "raw_data": [
+      {
+        "Technology": "Machine Learning Software\u00a0,Microsoft Corporation - Microsoft Bing",
+        "UsageCount": 317
+      },
+      {
+        "Technology": " Iphone / Mobile Compatible",
+        "UsageCount": 313
+      },
+      {
+        "Technology": " Gstatic Google Static Content",
+        "UsageCount": 262
+      },
+      {
+        "Technology": " Cloudflare",
+        "UsageCount": 257
+      },
+      {
+        "Technology": " Viewport Meta",
+        "UsageCount": 233
+      }
+    ]
+  },
+  {
+    "question": "How many executives have a presence on both LinkedIn and Twitter? (CompanyManagementDetail)",
+    "sql_query": "SELECT COUNT(Id) AS ExecutiveCount FROM CompanyManagementDetail WHERE LinkedinUrl IS NOT NULL AND TwitterUrl IS NOT NULL;",
+    "summary": "A total of 140,836 executives have a presence on both LinkedIn and Twitter.",
+    "raw_data": [
+      {
+        "ExecutiveCount": 140836
+      }
+    ]
+  },
+  {
+    "question": "What is the quarterly trend of deal signings for the vendor 'IBM'? (CompanyDealMaster)",
+    "sql_query": "SELECT YEAR(SigningDate) AS DealYear, DATEPART(quarter, SigningDate) AS DealQuarter, COUNT(Id) AS DealCount FROM CompanyDealMaster WHERE VendorParent = 'IBM' GROUP BY YEAR(SigningDate), DATEPART(quarter, SigningDate) ORDER BY DealYear, DealQuarter;",
+    "summary": "IBM's quarterly deal signings generally increased from 2009, reaching a peak in 2020 (e.g., 41 deals in Q2 2020), and then declined through Q3 2022.",
+    "raw_data": [
+      {
+        "DealYear": 2009,
+        "DealQuarter": 1,
+        "DealCount": 2
+      },
+      {
+        "DealYear": 2009,
+        "DealQuarter": 4,
+        "DealCount": 2
+      },
+      {
+        "DealYear": 2010,
+        "DealQuarter": 1,
+        "DealCount": 2
+      },
+      {
+        "DealYear": 2010,
+        "DealQuarter": 2,
+        "DealCount": 2
+      },
+      {
+        "DealYear": 2010,
+        "DealQuarter": 3,
+        "DealCount": 2
+      },
+      {
+        "DealYear": 2010,
+        "DealQuarter": 4,
+        "DealCount": 4
+      },
+      {
+        "DealYear": 2011,
+        "DealQuarter": 1,
+        "DealCount": 3
+      },
+      {
+        "DealYear": 2011,
+        "DealQuarter": 2,
+        "DealCount": 5
+      },
+      {
+        "DealYear": 2011,
+        "DealQuarter": 3,
+        "DealCount": 5
+      },
+      {
+        "DealYear": 2011,
+        "DealQuarter": 4,
+        "DealCount": 3
+      },
+      {
+        "DealYear": 2012,
+        "DealQuarter": 1,
+        "DealCount": 1
+      },
+      {
+        "DealYear": 2012,
+        "DealQuarter": 2,
+        "DealCount": 2
+      },
+      {
+        "DealYear": 2012,
+        "DealQuarter": 3,
+        "DealCount": 1
+      },
+      {
+        "DealYear": 2012,
+        "DealQuarter": 4,
+        "DealCount": 4
+      },
+      {
+        "DealYear": 2013,
+        "DealQuarter": 1,
+        "DealCount": 4
+      },
+      {
+        "DealYear": 2013,
+        "DealQuarter": 2,
+        "DealCount": 6
+      },
+      {
+        "DealYear": 2013,
+        "DealQuarter": 3,
+        "DealCount": 4
+      },
+      {
+        "DealYear": 2013,
+        "DealQuarter": 4,
+        "DealCount": 2
+      },
+      {
+        "DealYear": 2014,
+        "DealQuarter": 1,
+        "DealCount": 6
+      },
+      {
+        "DealYear": 2014,
+        "DealQuarter": 2,
+        "DealCount": 5
+      },
+      {
+        "DealYear": 2014,
+        "DealQuarter": 3,
+        "DealCount": 4
+      },
+      {
+        "DealYear": 2014,
+        "DealQuarter": 4,
+        "DealCount": 1
+      },
+      {
+        "DealYear": 2015,
+        "DealQuarter": 1,
+        "DealCount": 11
+      },
+      {
+        "DealYear": 2015,
+        "DealQuarter": 2,
+        "DealCount": 4
+      },
+      {
+        "DealYear": 2015,
+        "DealQuarter": 3,
+        "DealCount": 6
+      },
+      {
+        "DealYear": 2015,
+        "DealQuarter": 4,
+        "DealCount": 8
+      },
+      {
+        "DealYear": 2016,
+        "DealQuarter": 1,
+        "DealCount": 20
+      },
+      {
+        "DealYear": 2016,
+        "DealQuarter": 2,
+        "DealCount": 7
+      },
+      {
+        "DealYear": 2016,
+        "DealQuarter": 3,
+        "DealCount": 11
+      },
+      {
+        "DealYear": 2016,
+        "DealQuarter": 4,
+        "DealCount": 14
+      },
+      {
+        "DealYear": 2017,
+        "DealQuarter": 1,
+        "DealCount": 27
+      },
+      {
+        "DealYear": 2017,
+        "DealQuarter": 2,
+        "DealCount": 28
+      },
+      {
+        "DealYear": 2017,
+        "DealQuarter": 3,
+        "DealCount": 21
+      },
+      {
+        "DealYear": 2017,
+        "DealQuarter": 4,
+        "DealCount": 17
+      },
+      {
+        "DealYear": 2018,
+        "DealQuarter": 1,
+        "DealCount": 16
+      },
+      {
+        "DealYear": 2018,
+        "DealQuarter": 2,
+        "DealCount": 37
+      },
+      {
+        "DealYear": 2018,
+        "DealQuarter": 3,
+        "DealCount": 22
+      },
+      {
+        "DealYear": 2018,
+        "DealQuarter": 4,
+        "DealCount": 15
+      },
+      {
+        "DealYear": 2019,
+        "DealQuarter": 1,
+        "DealCount": 29
+      },
+      {
+        "DealYear": 2019,
+        "DealQuarter": 2,
+        "DealCount": 32
+      },
+      {
+        "DealYear": 2019,
+        "DealQuarter": 3,
+        "DealCount": 18
+      },
+      {
+        "DealYear": 2019,
+        "DealQuarter": 4,
+        "DealCount": 24
+      },
+      {
+        "DealYear": 2020,
+        "DealQuarter": 1,
+        "DealCount": 35
+      },
+      {
+        "DealYear": 2020,
+        "DealQuarter": 2,
+        "DealCount": 41
+      },
+      {
+        "DealYear": 2020,
+        "DealQuarter": 3,
+        "DealCount": 34
+      },
+      {
+        "DealYear": 2020,
+        "DealQuarter": 4,
+        "DealCount": 37
+      },
+      {
+        "DealYear": 2021,
+        "DealQuarter": 1,
+        "DealCount": 34
+      },
+      {
+        "DealYear": 2021,
+        "DealQuarter": 2,
+        "DealCount": 25
+      },
+      {
+        "DealYear": 2021,
+        "DealQuarter": 3,
+        "DealCount": 25
+      },
+      {
+        "DealYear": 2021,
+        "DealQuarter": 4,
+        "DealCount": 23
+      },
+      {
+        "DealYear": 2022,
+        "DealQuarter": 1,
+        "DealCount": 12
+      },
+      {
+        "DealYear": 2022,
+        "DealQuarter": 2,
+        "DealCount": 12
+      },
+      {
+        "DealYear": 2022,
+        "DealQuarter": 3,
+        "DealCount": 10
+      }
+    ]
+  },
+  {
+    "question": "What is the average number of technologies used by companies of different employee sizes? (CompanyInfo, CompanyTechStack)",
+    "sql_query": "SELECT TOP 10 ci.Employees AS EmployeeSize, AVG(CAST(TechCount.TechCount AS FLOAT)) AS AverageTechCount FROM CompanyInfo ci JOIN (SELECT CompanyInfoId, COUNT(Id) AS TechCount FROM CompanyTechStack GROUP BY CompanyInfoId) AS TechCount ON ci.Id = TechCount.CompanyInfoId WHERE ci.Employees IS NOT NULL GROUP BY ci.Employees ORDER BY ci.Employees;",
+    "summary": "The average number of technologies used varies significantly by company employee size, ranging from 11 for companies with 10 employees to 158 for those with 45,000 employees, with other sizes like 7,000 employees averaging 20 technologies.",
+    "raw_data": [
+      {
+        "EmployeeSize": " ",
+        "AverageTechCount": 61.63157894736842
+      },
+      {
+        "EmployeeSize": "-",
+        "AverageTechCount": 46.142857142857146
+      },
+      {
+        "EmployeeSize": "  4,000",
+        "AverageTechCount": 66.0
+      },
+      {
+        "EmployeeSize": "  45,000 ",
+        "AverageTechCount": 158.0
+      },
+      {
+        "EmployeeSize": "  7,000",
+        "AverageTechCount": 20.0
+      },
+      {
+        "EmployeeSize": " 1,000",
+        "AverageTechCount": 83.0
+      },
+      {
+        "EmployeeSize": " 1,139",
+        "AverageTechCount": 35.0
+      },
+      {
+        "EmployeeSize": " 1,523 ",
+        "AverageTechCount": 143.0
+      },
+      {
+        "EmployeeSize": " 1,730",
+        "AverageTechCount": 40.0
+      },
+      {
+        "EmployeeSize": " 10",
+        "AverageTechCount": 11.0
+      }
+    ]
+  },
+  {
+    "question": "Who are the top 3 vendors for companies in the 'Healthcare' industry based on deal count? (CompanyDealMaster, CompanyInfo, LookUpValue)",
+    "sql_query": "SELECT TOP 3 cdm.VendorParent, COUNT(cdm.Id) AS DealCount FROM CompanyDealMaster cdm JOIN CompanyInfo ci ON cdm.VendorId = ci.Id JOIN LookUpValue l ON ci.Industry = l.Id WHERE l.Value = 'Healthcare' GROUP BY cdm.VendorParent ORDER BY DealCount DESC;",
+    "summary": "The top 3 vendors for companies in the 'Healthcare' industry based on deal count are Alphabet with 289 deals, followed by Ringcentral with 35 deals, and Netcom Technologies with 1 deal.",
+    "raw_data": [
+      {
+        "VendorParent": "Alphabet",
+        "DealCount": 289
+      },
+      {
+        "VendorParent": "Ringcentral",
+        "DealCount": 35
+      },
+      {
+        "VendorParent": "Netcom Technologies",
+        "DealCount": 1
+      }
+    ]
+  },
+  {
+    "question": "What are the most common section types for the top 5 companies with the most data entries? (SectionData, SectionInfo, CompanyInfo)",
+    "sql_query": "SELECT TOP 5 ci.Name, si.SectionName, COUNT(sd.Id) AS SectionCount FROM SectionData sd JOIN SectionInfo si ON sd.SectionInfoId = si.Id JOIN CompanyInfo ci ON sd.CompanyInfoId = ci.Id WHERE ci.Id IN (SELECT TOP 5 CompanyInfoId FROM SectionData GROUP BY CompanyInfoId ORDER BY COUNT(Id) DESC) GROUP BY ci.Name, si.SectionName ORDER BY SectionCount DESC;",
+    "summary": "The most common section types for the top companies include \"Partnerships/JV\" (88 for Nokia Corporation), \"New Win\" (86 for Nokia Corporation and 63 for Oracle Corporation), and \"M & A\" (65 for Accenture plc).",
+    "raw_data": [
+      {
+        "Name": "Nokia Corporation",
+        "SectionName": "Partnerships/JV",
+        "SectionCount": 88
+      },
+      {
+        "Name": "Nokia Corporation",
+        "SectionName": "New Win",
+        "SectionCount": 86
+      },
+      {
+        "Name": "Accenture plc",
+        "SectionName": "M & A",
+        "SectionCount": 65
+      },
+      {
+        "Name": "Oracle Corporation",
+        "SectionName": "New Win",
+        "SectionCount": 63
+      },
+      {
+        "Name": "Amazon Web Services, Inc.",
+        "SectionName": "New Launch",
+        "SectionCount": 54
+      }
+    ]
+  },
+  {
+    "question": "For the top 5 executives with the most persona articles, what are their company and department? (PersonaMisc, PersonaUser, CompanyManagementDetail, CompanyInfo, LookUpValue)",
+    "sql_query": "SELECT TOP 5 p.Name AS ExecutiveName, c.Name AS CompanyName, d.Value AS Department FROM PersonaMisc pm JOIN PersonaUser pu ON pm.PersonaUserId = pu.Id JOIN CompanyManagementDetail p ON pu.Id = p.PersonaUserId JOIN CompanyInfo c ON p.CompanyInfoId = c.Id JOIN LookUpValue d ON p.DepartmentId = d.Id WHERE pm.Article IS NOT NULL AND pm.Article != '' AND pm.Article != '{\"Articles\":[]}' GROUP BY p.Name, c.Name, d.Value ORDER BY COUNT(pm.Id) DESC;",
+    "summary": "The top 5 executives with the most persona articles include Annika \u00d6LME (SKF Industrie S.p.A., Technology), Rickard Gustafson (SKF Industrie S.p.A., Board of Directors), Tze Chin Ong (Ministry of Sustainability and the Environment, Ministry of Sustainability and the Environment), Niclas Rosenlew (SKF Industrie S.p.A., Finance), and Rajiv Anand (Axis Bank, Wholesale Banking and Digital Banking, Marketing and Corporate Communications).",
+    "raw_data": [
+      {
+        "ExecutiveName": "Annika \u00d6lme",
+        "CompanyName": "SKF Industrie S.p.A.",
+        "Department": "Technology"
+      },
+      {
+        "ExecutiveName": "Rickard Gustafson",
+        "CompanyName": "SKF Industrie S.p.A.",
+        "Department": "Board of Directors"
+      },
+      {
+        "ExecutiveName": "Tze Chin Ong",
+        "CompanyName": "Ministry of Sustainability and the Environment",
+        "Department": "Ministry of Sustainability and the Environment"
+      },
+      {
+        "ExecutiveName": "Niclas Rosenlew",
+        "CompanyName": "SKF Industrie S.p.A.",
+        "Department": "Finance"
+      },
+      {
+        "ExecutiveName": "Rajiv Anand",
+        "CompanyName": "Axis Bank",
+        "Department": "Wholesale Banking and Digital Banking, Marketing and Corporate Communications"
+      }
+    ]
+  },
+  {
+    "question": "What is the yearly trend of Twitter activity (likes and retweets) for 'G-XChange Inc.'? (CompanyTwitterDetail, CompanyInfo)",
+    "sql_query": "SELECT YEAR(ctd.TwitterDate) AS ActivityYear, SUM(ctd.Likes) AS TotalLikes, SUM(ctd.Reposts) AS TotalRetweets FROM CompanyTwitterDetail ctd JOIN CompanyInfo ci ON ctd.CompanyInfoId = ci.Id WHERE ci.Name = 'G-XChange Inc.' GROUP BY YEAR(ctd.TwitterDate) ORDER BY ActivityYear DESC;",
+    "summary": "G-XChange Inc.'s Twitter activity saw a substantial increase from 2023 to 2024, with total likes rising from 722 to 220,293 and total retweets from 152 to 92,430.",
+    "raw_data": [
+      {
+        "ActivityYear": 2024,
+        "TotalLikes": 220293,
+        "TotalRetweets": 92430
+      },
+      {
+        "ActivityYear": 2023,
+        "TotalLikes": 722,
+        "TotalRetweets": 152
+      }
+    ]
+  }
+]

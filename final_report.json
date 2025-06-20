@@ -1,0 +1,566 @@
+[
+  {
+    "question": "What are the events that KPMG International Limited attends? (CompanyInfo, CompanyManagementDetail, PersonaUser, PersonaMisc, CompanyLeadershipExcerpt, LookUpValue)",
+    "sql_query": "SELECT TOP 5 'Speaking Engagement' AS EventType, p.Name AS ExecutiveName, pm.Event AS EventDetails, pm.Speaks AS SpeakingTopic FROM PersonaMisc AS pm JOIN PersonaUser AS pu ON pm.PersonaUserId = pu.Id JOIN CompanyManagementDetail AS p ON pu.Id = p.PersonaUserId WHERE p.CompanyInfoId = (SELECT Id FROM CompanyInfo WHERE Name = 'KPMG International Limited') AND (pm.Event IS NOT NULL OR pm.Speaks IS NOT NULL) UNION SELECT TOP 5 'Leadership Excerpt' AS EventType, cle.ExcerptBy AS ExecutiveName, cle.Detail AS EventDetails, lv.Value AS SpeakingTopic FROM CompanyLeadershipExcerpt AS cle LEFT JOIN LookUpValue AS lv ON cle.ITFocusAreaId = lv.Id WHERE cle.CompanyInfoId = (SELECT Id FROM CompanyInfo WHERE Name = 'KPMG International Limited') AND (cle.Detail LIKE '%speak%' OR cle.Detail LIKE '%present%');",
+    "summary": "KPMG International Limited attends various events including the KPMG Service Provider Forum (2021, 2023), KPMG Global GBS Partners Summit, Google Cloud Summit 2019, and the Women in Technology Roundtable 2016.",
+    "raw_data": [
+      {
+        "EventType": "Speaking Engagement",
+        "ExecutiveName": "Bill Thomas",
+        "EventDetails": "{\"Events\":[{\"Name\":\"name\",\"Description\":\"description\",\"OnDate\":\"Oct 2020\",\"link\":\"www.google.com\"}]\r\n\t\t\t\t\t\t\t\t,\"News\":[{\"Name\":\"name\",\"Description\":\"description\",\"OnDate\":\"Oct 2020\",\"link\":\"www.yahoo.com\"}]\r\n\t\t\t\t\t\t\t\t}",
+        "SpeakingTopic": "{\"Personal\":[{\"Topic\":\"No information available\",\"Description\":\"\"},{\"Topic\":\"\",\"Description\":\"dummydesc\"},{\"Topic\":\"\",\"Description\":\"dummydesc\"}],\"Professional\":[{\"Topic\":\"No information available\",\"Description\":\"dummydesc\",\"link\":\"\"},{\"Topic\":\"\",\"Description\":\"dummydesc\",\"link\":\"\"},{\"Topic\":\"\",\"Description\":\"dummydesc\",\"link\":\"\"}]}"
+      },
+      {
+        "EventType": "Speaking Engagement",
+        "ExecutiveName": "Kelle Fontenot",
+        "EventDetails": "{\"Events\":[{\"Name\":\"COVID-19 and rapid response: What now. What next.\",\"Description\":\" Kelle Fontenot, Principal, KPMG discussed the ways that how organizations can stabilize, prioritize, and mobilize to achieve order in the chaos caused by the novel coronavirus\",\"OnDate\":\"Apr 2020\",\"link\":\"https://advisory.kpmg.us/events/podcast-homepage/advice-worth-keeping/2020/podcast-rapid-response-covid19.html\"},{\"Name\":\"Women in Technology Roundtable 2016\",\"Description\":\"Kelle Fontenot, Principal, KPMG LLP was invited as a panelist in this event and shared her insights about the women role in technology sector and their challenges and achievements so fat\",\"OnDate\":\"Sep 2016\",\"link\":\"https://www.wictphiladelphia.org/event/kpmg-women-in-tech/\"}],\"News\":[{\"Name\":\"No information available\",\"Description\":\"\",\"OnDate\":\"\",\"link\":\"\"}]}",
+        "SpeakingTopic": "{\"Personal\":[{\"Topic\":\"No information available\",\"Description\":\"\"}],\"Professional\":[{\"Topic\":\"No information available\",\"Description\":\"\",\"link\":\"\"}]}"
+      },
+      {
+        "EventType": "Speaking Engagement",
+        "ExecutiveName": "Mark Beukers",
+        "EventDetails": "{\"Events\":[{\"Name\":\"KPMG Service Provider Forum 2023\",\"Description\":\"Mark attended the event where the speakers shared their views on the most impactful trends in the market \u2018Environmental, Social & Governance (ESG) incorporated sourcing\u2019\",\"OnDate\":\"May 2023\",\"link\":\"https://www.linkedin.com/posts/mark-beukers_kpmg-serviceproviderforum-yourbusinessservicestransformationpartner-activity-7061254307857227776-xCDx?utm_source=share&utm_medium=member_desktop\",\"writes\":\"Attendee\"},{\"Name\":\"KPMG Global GBS Partners Summit\",\"writes\":\"Attendee\",\"link\":\"https://www.linkedin.com/feed/update/urn:li:activity:7062798930484330496?utm_source=share&utm_medium=member_desktop\",\"Description\":\"Mark attended this event where the speakers discussed the most relevant trends and best practices\",\"OnDate\":\"May 2023\"},{\"link\":\"https://www.instagram.com/p/B3cfzJEHPM5/?utm_source=ig_web_copy_link&igshid=MzRlODBiNWFlZA==\",\"Description\":\"Mark attended this event\",\"writes\":\"Attendee\",\"OnDate\":\"Oct 2019\",\"Name\":\"Google Cloud Summit 2019\"},{\"Name\":\"KPMG Service Provider Forum 2021\",\"writes\":\"Speaker\",\"link\":\"https://www.linkedin.com/posts/tim-von-der-fuhr-072198a3_looking-forward-to-engaging-with-the-ito-activity-6762657173106384896-HEOh?utm_source=share&utm_medium=member_desktop\",\"OnDate\":\"Feb 2021\",\"Description\":\"At this event, Mark was invited as a speaker and he shared his views on the trends of Vested Outsourcing\"}],\"News\":[{\"Name\":\"No Information Available\",\"Description\":\"Description\",\"OnDate\":\"Oct 2021\",\"link\":\"https://www.google.com\"}]}",
+        "SpeakingTopic": "{\"Personal\":[{\"Topic\":\"No Information Available\",\"Description\":\"\"}],\"Professional\":[{\"Topic\":\"No Information Available\",\"Description\":\"\"}]}"
+      },
+      {
+        "EventType": "Speaking Engagement",
+        "ExecutiveName": "Philip Davidson",
+        "EventDetails": "{\"Events\":[{\"Name\":\"Podcast Series: Leading Professional People\",\"Description\":\"Podcast series brings together cutting edge theory and first hand experience to explore some of the most crucial leadership questions for professional people. Empson outlines one powerful method \u2013 social control \u2013 and Morley explores his experience of leading partners through the process of global integration\",\"OnDate\":\"8 Mar 2021\",\"link\":\"https://www.lauraempson.com/podcasts\"}],\"News\":[{\"Name\":\"No information available\",\"Description\":\"\",\"OnDate\":\"\",\"link\":\"\"}]}",
+        "SpeakingTopic": "{\"Personal\":[{\"Topic\":\"No information available\",\"Description\":\"\"}],\"Professional\":[{\"Topic\":\"No information available\",\"Description\":\"\",\"link\":\"\"}]}"
+      }
+    ]
+  },
+  {
+    "question": "What is the total deal value for the top 10 vendors? (CompanyDealMaster)",
+    "sql_query": "SELECT TOP 10 VendorParent, SUM(ServiceContractValue) AS TotalDealValue FROM CompanyDealMaster GROUP BY VendorParent ORDER BY TotalDealValue DESC;",
+    "summary": "For the top 10 vendors, Leidos Holdings leads with a total deal value of $70,054,056,688, followed by AT&T at $61,810,711,995 and IBM at $53,416,669,057.",
+    "raw_data": [
+      {
+        "VendorParent": "Leidos Holdings",
+        "TotalDealValue": 70054056688
+      },
+      {
+        "VendorParent": "AT&T",
+        "TotalDealValue": 61810711995
+      },
+      {
+        "VendorParent": "IBM",
+        "TotalDealValue": 53416669057
+      },
+      {
+        "VendorParent": "CGI",
+        "TotalDealValue": 48646252687
+      },
+      {
+        "VendorParent": "Microsoft",
+        "TotalDealValue": 48118213351
+      },
+      {
+        "VendorParent": "General Dynamics",
+        "TotalDealValue": 45775691280
+      },
+      {
+        "VendorParent": "DXC Technology",
+        "TotalDealValue": 45011692768
+      },
+      {
+        "VendorParent": "Accenture",
+        "TotalDealValue": 41835387870
+      },
+      {
+        "VendorParent": "Lockheed Martin",
+        "TotalDealValue": 38605623839
+      },
+      {
+        "VendorParent": "Red River Computer",
+        "TotalDealValue": 37693224220
+      }
+    ]
+  },
+  {
+    "question": "How many executives are there in each department for 'LPL Financial Holdings Inc.'? (CompanyManagementDetail, CompanyInfo, LookUpValue)",
+    "sql_query": "SELECT TOP 10 l.Value AS Department, COUNT(p.Id) AS NumberOfExecutives FROM CompanyManagementDetail AS p JOIN CompanyInfo AS c ON p.CompanyInfoId = c.Id JOIN LookUpValue AS l ON p.DepartmentId = l.Id WHERE c.Name = 'LPL Financial Holdings Inc.' GROUP BY l.Value ORDER BY NumberOfExecutives DESC;",
+    "summary": "LPL Financial Holdings Inc. has the most executives in the Board of Directors (10), followed by Product Management (7) and Technology (7).",
+    "raw_data": [
+      {
+        "Department": "Board of Directors",
+        "NumberOfExecutives": 10
+      },
+      {
+        "Department": "Product Management",
+        "NumberOfExecutives": 7
+      },
+      {
+        "Department": "Technology",
+        "NumberOfExecutives": 7
+      },
+      {
+        "Department": "Information Technology",
+        "NumberOfExecutives": 4
+      },
+      {
+        "Department": "Information Security",
+        "NumberOfExecutives": 4
+      },
+      {
+        "Department": "Head of Business Strategy & Innovation",
+        "NumberOfExecutives": 2
+      },
+      {
+        "Department": "Head of Wealth Management",
+        "NumberOfExecutives": 2
+      },
+      {
+        "Department": "Supervision",
+        "NumberOfExecutives": 2
+      },
+      {
+        "Department": "Principal Data Engineer",
+        "NumberOfExecutives": 2
+      },
+      {
+        "Department": "Technology Operations",
+        "NumberOfExecutives": 2
+      }
+    ]
+  },
+  {
+    "question": "What is the geographic distribution of the top 10 company headquarters locations? (CompanyInfo, LookUpValue)",
+    "sql_query": "SELECT TOP 10 l.Value AS GeographyName, COUNT(c.Id) AS CompanyCount FROM CompanyInfo c JOIN LookUpValue l ON c.Geography = l.Id WHERE c.Geography IS NOT NULL GROUP BY l.Value ORDER BY CompanyCount DESC;",
+    "summary": "The top company headquarters locations are predominantly in APAC - Group I (18,848 companies), European Union - Group I (16,332 companies), and North America - Group I (9,663 companies).",
+    "raw_data": [
+      {
+        "GeographyName": "APAC - Group I",
+        "CompanyCount": 18848
+      },
+      {
+        "GeographyName": "European Union - Group I",
+        "CompanyCount": 16332
+      },
+      {
+        "GeographyName": "North America - Group I",
+        "CompanyCount": 9663
+      },
+      {
+        "GeographyName": "European Union - Group III",
+        "CompanyCount": 6284
+      },
+      {
+        "GeographyName": "European Union - Group II",
+        "CompanyCount": 3232
+      },
+      {
+        "GeographyName": "APAC - Group II",
+        "CompanyCount": 2432
+      },
+      {
+        "GeographyName": "Middle East - Group I",
+        "CompanyCount": 823
+      },
+      {
+        "GeographyName": "South America - Group I",
+        "CompanyCount": 777
+      },
+      {
+        "GeographyName": "South America - Group II",
+        "CompanyCount": 389
+      },
+      {
+        "GeographyName": "APAC - Group III",
+        "CompanyCount": 295
+      }
+    ]
+  },
+  {
+    "question": "Find the total number of social media posts (Twitter + Facebook) for the top 5 most active companies. (CompanyTwitterDetail, CompanyFacebookDetail, CompanyInfo)",
+    "sql_query": "SELECT TOP 5 c.Name, (SELECT COUNT(*) FROM CompanyTwitterDetail WHERE CompanyInfoId = c.Id) + (SELECT COUNT(*) FROM CompanyFacebookDetail WHERE CompanyInfoId = c.Id) AS TotalPosts FROM CompanyInfo AS c ORDER BY TotalPosts DESC;",
+    "summary": "The top 5 most active companies by social media posts are led by G-XChange Inc. with 29780 posts, followed by IndusInd Bank with 24463 posts, and Bancolombia S.A. with 18875 posts.",
+    "raw_data": [
+      {
+        "Name": "G-XChange Inc.",
+        "TotalPosts": 29780
+      },
+      {
+        "Name": "IndusInd Bank",
+        "TotalPosts": 24463
+      },
+      {
+        "Name": "Bancolombia S.A.",
+        "TotalPosts": 18875
+      },
+      {
+        "Name": "Union Bank of India",
+        "TotalPosts": 18680
+      },
+      {
+        "Name": "Asianxt Digital Technologies Private Limited",
+        "TotalPosts": 18679
+      }
+    ]
+  },
+  {
+    "question": "What are the 5 most recent 'Digital Transformation' initiatives announced by companies? (SectionData, SectionInfo, CompanyInfo)",
+    "sql_query": "SELECT TOP 5 c.Name, s.Headline, s.PublishedOn FROM SectionData s JOIN SectionInfo si ON s.SectionInfoId = si.Id JOIN CompanyInfo c ON s.CompanyInfoId = c.Id WHERE si.SectionName = 'Digital Transformation' ORDER BY s.PublishedOn DESC;",
+    "summary": "The five most recent 'Digital Transformation' initiatives include PROCEPT BioRobotics unveiling a new global website (October 2025) and BMW Group focusing on digitalization in component production (May 2025), alongside efforts by Unilever, Weatherford, and Indosat.",
+    "raw_data": [
+      {
+        "Name": "Indosat",
+        "Headline": "Kloudville Marketplace 360 deployed for Indosat Ooredoo Hutchison (IOH) Digital Marketplace Transformation\n",
+        "PublishedOn": "92022-09-20"
+      },
+      {
+        "Name": "PROCEPT BioRobotics Corporation",
+        "Headline": "PROCEPT BioRobotics Unveils New Global Website with Enhanced Resources",
+        "PublishedOn": "2025-10-04"
+      },
+      {
+        "Name": "Bayerische Motoren Werke AG",
+        "Headline": "BMW Group Plant Landshut focuses on digitalization in component production",
+        "PublishedOn": "2025-05-16"
+      },
+      {
+        "Name": "Unilever PLC",
+        "Headline": "Unilever\u2019s 100+ Accelerator partnership unlocks AI innovation across supply chain",
+        "PublishedOn": "2025-05-15"
+      },
+      {
+        "Name": "Weatherford International",
+        "Headline": "Weatherford Announces a Strategic Agreement with Amazon Web Services to Accelerate Digital Transformation and Enhance Operational Efficiency",
+        "PublishedOn": "2025-05-13"
+      }
+    ]
+  },
+  {
+    "question": "Which 10 companies have had the most 'M & A' activity headlines? (SectionData, SectionInfo, CompanyInfo)",
+    "sql_query": "SELECT TOP 10 c.Name, COUNT(s.Id) AS MA_Count FROM SectionData s JOIN SectionInfo si ON s.SectionInfoId = si.Id JOIN CompanyInfo c ON s.CompanyInfoId = c.Id WHERE si.SectionName = 'M & A' GROUP BY c.Name ORDER BY MA_Count DESC;",
+    "summary": "Accenture plc had the most M&A activity headlines with 65, followed by HUB International Limited with 61, and Atlas Copco with 43.",
+    "raw_data": [
+      {
+        "Name": "Accenture plc",
+        "MA_Count": 65
+      },
+      {
+        "Name": "HUB International Limited",
+        "MA_Count": 61
+      },
+      {
+        "Name": "Atlas Copco",
+        "MA_Count": 43
+      },
+      {
+        "Name": "Apex Group Ltd.",
+        "MA_Count": 31
+      },
+      {
+        "Name": "Kohlberg Kravis Roberts & Co. L.P.",
+        "MA_Count": 30
+      },
+      {
+        "Name": "Blackstone Inc.",
+        "MA_Count": 27
+      },
+      {
+        "Name": "Crash Champions",
+        "MA_Count": 26
+      },
+      {
+        "Name": "International Business Machines Corporation",
+        "MA_Count": 25
+      },
+      {
+        "Name": "Brown & Brown, Inc.",
+        "MA_Count": 24
+      },
+      {
+        "Name": "Holcim Ltd",
+        "MA_Count": 23
+      }
+    ]
+  },
+  {
+    "question": "Which companies use Cloudflare technology in their tech stack? (CompanyTechStack, CompanyInfo)",
+    "sql_query": "SELECT TOP 10 ci.Name FROM CompanyInfo AS ci JOIN CompanyTechStack AS cts ON ci.Id = cts.CompanyInfoId WHERE cts.Technology LIKE '%Cloudflare%';",
+    "summary": "Companies such as KPMG International Limited, DXC Technology Company, and TC Energy are identified as using Cloudflare technology in their tech stack.",
+    "raw_data": [
+      {
+        "Name": "KPMG International Limited"
+      },
+      {
+        "Name": "DXC Technology Company"
+      },
+      {
+        "Name": "TC Energy"
+      },
+      {
+        "Name": "Mitie Group PLC"
+      },
+      {
+        "Name": "Virgin Media O2"
+      },
+      {
+        "Name": "Breville Group Ltd"
+      },
+      {
+        "Name": "The ODP Corporation"
+      },
+      {
+        "Name": "Tivity Health, Inc."
+      },
+      {
+        "Name": "Lululemon Athletica Inc."
+      },
+      {
+        "Name": "Alaska Air Group Inc"
+      }
+    ]
+  },
+  {
+    "question": "What are the strategic IT priorities of Republic Airways? (CompanyFocusAreaDetail, CompanyInfo)",
+    "sql_query": "SELECT cfa.Headline, cfa.Detail FROM CompanyFocusAreaDetail AS cfa JOIN CompanyInfo AS ci ON cfa.CompanyInfoId = ci.Id WHERE ci.Name = 'Republic Airways';",
+    "summary": "Republic Airways' strategic IT priorities focus on technology innovations like cloud solutions and virtual reality, alongside robust cybersecurity, automation for operational efficiency, and enhancing mobility for its workforce.",
+    "raw_data": [
+      {
+        "Headline": null,
+        "Detail": " Company focuses on technology innovations to lead the airline through new technology investments of tools, cloud solutions. Company has made several digital transformations around data analytics, business continuity and disaster recovery programs as well as the technology supporting the launch of the airline\u2019s flight school LIFT Academy. Company's industry-first concierge and logistics app for its mobile workforce sets Republic Airways apart. Republic's \u201cCrew Life\u201d app created in 2016 eliminated 70,000 phone calls that used to pour in annually to the dispatch center. Also, several innovations were introduced in LIFT Academy and LIFT lab including the use of VR technology simulators, to attract people to take up aviation careers\u200b \n"
+      },
+      {
+        "Headline": null,
+        "Detail": "Company focuses on protecting the data in the organization amidst lot of attacks and threats that happens across every day. Company is leveraging cybersecurity solutions to protect critical data across the aviation supply chain. Company stretches its ability to over come the ransomware and malware functions on the top priority, while listing the second to the credential theft that observed an increased attempt in phishing and social engineering attempts. Company also focuses on third-party risk where the sophisticated attackers exploit their vulnerability in a software product, that they are using in their ecosystem, to access their networks or resources or data. To initiate the cybersecurity strategy, company focused on advanced identity and access management solution to monitor behaviors and 24/7 security incident management solutions\u200b \n"
+      },
+      {
+        "Headline": null,
+        "Detail": "Republic Airways focused on its need for flexibility and speed through automation solutions. This helps in solving unforeseen business changes and increases overall development velocity to support the operation. Company build bots through that support that goal of helping their flights to take off on time, along with easing the burden and stress of their business partners performing repetitive tasks. Republic Airways built a new bot named O.T.I.S. (On Time Integrated Support), that manage its existing 130 bots, automating about 50 processes on ten bot-runners with one user performing the development and administration of these bots within the organization.\u00a0\u200b \n"
+      },
+      {
+        "Headline": null,
+        "Detail": " Company leverages virtual reality technology in its LIFT Lab, a mobile unit developed by the company taking to schools and festivals to promote careers in aviation. Inside the Lab are virtual reality demo stations, powered by Dell, that give access to the visitors to experience a five-minute flight simulation stations outfitted with high-performance computer power and graphics acceleration needed by the lab\u2019s flight simulation software.\u200b \n"
+      },
+      {
+        "Headline": null,
+        "Detail": "Republic Airways\u2019 journey to the cloud began with the need for visibility and efficiency connecting to their public clouds. It transformed to multi-cloud and needed enterprise-class cloud networking, security and operational visibility across regions and throughout multiple cloud providers. Company recently deployed Aviatrix Cloud Network Platform for their AWS and Azure Environment.\u200b \n"
+      },
+      {
+        "Headline": null,
+        "Detail": " Company always focused on mobility as its several employees including pilots, captains, flight attendants, were on air most of the time. Republic Airways ensured its employees were given experience that they deserved to be as productive and customer experience-centric. Company jumped on to mobility a lot ahead of time, with the deployment of tablets by every workforce. Several applications are deployed on it with proper training on its usage. This eased the company in providing the requirements and experiences among the workforce to serve the customers better.\u200b \n"
+      }
+    ]
+  },
+  {
+    "question": "What is the average number of likes on Facebook for the top 5 companies with the highest follower counts? (CompanyFacebookDetail, SocialMediaInfo, CompanyInfo)",
+    "sql_query": "SELECT TOP 5 c.Name, AVG(cfd.Likes) as AverageLikes FROM CompanyFacebookDetail cfd JOIN CompanyInfo c ON cfd.CompanyInfoId = c.Id JOIN SocialMediaInfo smi ON c.Id = smi.CompanyInfoId WHERE smi.SocialMediaType = 'Facebook' GROUP BY c.Name ORDER BY MAX(smi.Count) DESC;",
+    "summary": "The average Facebook likes for the top 5 companies with the highest follower counts vary significantly, with The MathWorks, Inc. leading at 467 likes, followed by Aviva plc at 184, and Zurich Insurance Group at 120.",
+    "raw_data": [
+      {
+        "Name": "Zurich Insurance Group",
+        "AverageLikes": 120
+      },
+      {
+        "Name": "The Crown Estate",
+        "AverageLikes": 11
+      },
+      {
+        "Name": "SL Green Realty Corp.",
+        "AverageLikes": 8
+      },
+      {
+        "Name": "The MathWorks, Inc.",
+        "AverageLikes": 467
+      },
+      {
+        "Name": "Aviva plc",
+        "AverageLikes": 184
+      }
+    ]
+  },
+  {
+    "question": "How does Helmerich & Payne integrate AI to optimize its drilling operations? (CompanyFocusAreaDetail, CompanyManagementDetail)",
+    "sql_query": "SELECT 'FocusArea' AS Source, f.Detail FROM CompanyFocusAreaDetail f WHERE f.CompanyInfoId = (SELECT TOP 1 Id FROM CompanyInfo WHERE Name LIKE '%Helmerich%Payne%') AND f.Active = 1 AND f.Detail IS NOT NULL AND f.Detail <> '' AND (f.Detail LIKE '%AI%' OR f.Detail LIKE '%artificial intelligence%' OR f.Detail LIKE '%automation%' OR f.Detail LIKE '%machine learning%') UNION ALL SELECT 'Management' AS Source, m.Detail FROM CompanyManagementDetail m WHERE m.CompanyInfoId = (SELECT TOP 1 Id FROM CompanyInfo WHERE Name LIKE '%Helmerich%Payne%') AND m.Active = 1 AND m.Detail IS NOT NULL AND m.Detail <> '' AND (m.Detail LIKE '%AI%' OR m.Detail LIKE '%artificial intelligence%' OR m.Detail LIKE '%automation%' OR m.Detail LIKE '%machine learning%');",
+    "summary": "Helmerich & Payne integrates AI-driven technologies and machine learning algorithms into its drilling operations to improve real-time decision-making, thereby optimizing performance, reducing operational risks, and enhancing efficiency for safer and more productive processes.",
+    "raw_data": [
+      {
+        "Source": "FocusArea",
+        "Detail": "Helmerich & Payne embraced digital transformation to enhance operational efficiency, innovate drilling technologies, and lead the energy sector through advanced digital initiatives.\n\nHelmerich & Payne developed a comprehensive digital roadmap to integrate  technologies across its drilling operations. This strategy focused on automating processes, improving data-driven decision-making, and optimizing resource management, leading to enhanced operational efficiency and reduced downtime.\n\nHelmerich & Payne leveraged digital solutions to innovate its drilling technologies, enabling real-time monitoring and advanced analytics. By incorporating digital tools, the company improved precision and safety in drilling operations, driving greater productivity and sustainability in the energy sector.\n"
+      },
+      {
+        "Source": "FocusArea",
+        "Detail": "Helmerich & Payne leveraged AI and automation to revolutionize drilling operations, enhance efficiency, and drive innovation in the energy sector.\n\nHelmerich & Payne integrated AI-driven technologies into its drilling operations to optimize performance and reduce operational risks. By utilizing machine learning algorithms, the company improved decision-making in real-time, leading to safer and more efficient drilling processes.\n\nHelmerich & Payne implemented advanced automation systems across its drilling rigs to enhance operational efficiency. These systems allowed for precise control over drilling activities, reducing downtime and increasing productivity by automating repetitive tasks and streamlining complex processes.\n"
+      },
+      {
+        "Source": "FocusArea",
+        "Detail": "Helmerich & Payne focused on leveraging data and analytics to drive informed decision-making, optimize operations, and support strategic business initiatives.\n\nHelmerich & Payne utilized advanced analytics tools such as R, Hadoop, and RapidMiner to analyze large datasets. This approach enabled the company to develop and maintain metrics, reports, and dashboards that support key business decisions, optimizing operations and enhancing business outcomes.\n\nHelmerich & Payne invested in migrating data to Microsoft Azure Cloud Data Lake to support big data analytics. By leveraging Azure SQL Database, the company improved its ability to manage and analyze vast amounts of data, ensuring scalability and agility in its data-driven initiatives.\n"
+      },
+      {
+        "Source": "FocusArea",
+        "Detail": "Helmerich & Payne prioritized cybersecurity to protect their operations, safeguard sensitive data, and ensure the resilience of their digital infrastructure\n\nHelmerich & Payne recognized the critical importance of cybersecurity in protecting their operations and data. They implemented comprehensive cybersecurity measures, including robust firewalls, intrusion detection systems, and employee training programs to mitigate risks. The company continuously monitored their IT systems and vendor networks to prevent unauthorized access and data breaches.\n\nHelmerich & Payne enhanced their incident response capabilities by developing and regularly updating incident response plans to minimize the impact of potential cybersecurity breaches. The company invested in advanced detection and mitigation technologies, ensuring a swift and effective response to any cybersecurity incident.\n"
+      }
+    ]
+  },
+  {
+    "question": "Can you outline the major recent social media initiatives by New York Life related to multicultural recruitment? (CompanyFacebookDetail, CompanyFocusAreaDetail)",
+    "sql_query": "SELECT 'Facebook' AS Source, f.FBText AS Detail FROM CompanyFacebookDetail f WHERE f.CompanyInfoId = (SELECT TOP 1 Id FROM CompanyInfo WHERE Name LIKE '%New York Life%') AND f.Active = 1 AND f.FBText IS NOT NULL AND f.FBText <> '' AND (f.FBText LIKE '%diversity%' OR f.FBText LIKE '%multicultural%' OR f.FBText LIKE '%inclusion%' OR f.FBText LIKE '%recruit%' OR f.FBText LIKE '%hiring%' OR f.FBText LIKE '%DEI%' OR f.FBText LIKE '%equity%') UNION ALL SELECT 'FocusArea' AS Source, c.Detail FROM CompanyFocusAreaDetail c WHERE c.CompanyInfoId = (SELECT TOP 1 Id FROM CompanyInfo WHERE Name LIKE '%New York Life%') AND c.Active = 1 AND c.Detail IS NOT NULL AND c.Detail <> '' AND (c.Detail LIKE '%diversity%' OR c.Detail LIKE '%multicultural%' OR c.Detail LIKE '%inclusion%' OR c.Detail LIKE '%recruit%' OR c.Detail LIKE '%hiring%' OR c.Detail LIKE '%DEI%' OR c.Detail LIKE '%equity%');",
+    "summary": "New York Life's recent social media initiatives related to multicultural recruitment primarily showcase the company's recognition on various diversity and inclusion lists, notably being named a \"Best Company for Multicultural Women\" by Seramount for its commitment to their recruitment, retention, and advancement.",
+    "raw_data": [
+      {
+        "Source": "Facebook",
+        "Detail": "Michaele N. Turnage Young, Senior Counsel at the NAACP Legal Defense and Educational Fund, discusses educational equity and how certain barriers to equal educational opportunities are more pronounced during a public health crisis with Heather Nesle."
+      },
+      {
+        "Source": "Facebook",
+        "Detail": "New York Life supports inclusion and diversity in all its forms. From being the first to insure people with disabilities, to supporting our employees, this year we are proud to celebrate the 30th anniversary of the ADA. #ada30"
+      },
+      {
+        "Source": "Facebook",
+        "Detail": "We're honored to be recognized for our diversity & inclusion practices by earning a TOP 10% INDEX spot on the 2020 Diversity Best Practices Inclusion Index for our efforts and commitment to Best Practices in Recruitment, Retention & Advancement, Company Culture and Demographics/Transparency.  #DBPInclusionIndex"
+      },
+      {
+        "Source": "Facebook",
+        "Detail": "Watch the historic unveiling of the Women\u2019s Rights Pioneers Monument. It\u2019s the first monument in Central Park to feature real women. Our help with its funding reinforces our commitment to New York City, and our support for women\u2019s issues, diversity, and inclusion. #WomensEqualityDay #MonumentalWomen #NYLFoundation"
+      },
+      {
+        "Source": "Facebook",
+        "Detail": "Financial education and empowerment for the African American community are driving forces for Eric Jackson, CVP Market Manager of the African American Market Unit. Read more about him in Diversity Journal\u2019s Black Leaders Worth Watching."
+      },
+      {
+        "Source": "Facebook",
+        "Detail": "Kathleen Navarro, Head of Talent Management & Chief Diversity Officer, shares the importance of New York Life\u2019s mission of uniting across our people, customers, and communities."
+      },
+      {
+        "Source": "Facebook",
+        "Detail": "Participation in high-quality #afterschool and summer learning programs help students thrive. We\u2019re proud to join with Afterschool Alliance to announce $1.5M in new Aim High grants, which will help 36 excellent afterschool and summer programs serving economically disadvantaged middle school youth. As part of our ongoing commitments to support an equal and just society, we doubled the number of 1-year Aim High grants, awarding a total of 20 grants to support programs\u2019 racial equity and social justice efforts. Learn more about our winners here. #NYLFoundation"
+      },
+      {
+        "Source": "Facebook",
+        "Detail": "Diversity, equity, and inclusion are very important to us at New York Life, which is why we are extremely proud to be included on Forbes' America's Best Employers for Diversity list for 2021. https://nyl.co/3xPLOhw"
+      },
+      {
+        "Source": "Facebook",
+        "Detail": "We're proud to be named to Seramount\u2019s 2021 Best Companies for Multicultural Women list for our ongoing commitment to the recruitment, retention, and advancement of multicultural women. Read more about our recognition. https://nyl.co/3waJqR0 #MCW2021"
+      },
+      {
+        "Source": "Facebook",
+        "Detail": "From hiring our first female employee in 1885 to becoming one of the best companies for women to build a career, we have a long history of supporting women.   \u2022 In 1885, we hired our first female employee, Winifred Supple. \u2022 In 1889, Mary \u201cMinnie\u201d Tumbleson became New York Life\u2019s first female agent. \u2022 One of the first women to own a New York Life insurance policy was women's rights activist, Susan B. Anthony. \u2022 In 1947, we hired our first female director, Mildred McAfee. \u2022 Today, New York Life is considered one of the best companies for women to build a career.  This #InternationalWomensDay learn more about how women have helped continue to shape New York Life here."
+      },
+      {
+        "Source": "Facebook",
+        "Detail": "Our 2022 DE&I Report provides an overview of our progress as well as our ongoing commitment to the importance of promoting diversity, equity, and inclusion in the workplace. Read the full report here."
+      },
+      {
+        "Source": "Facebook",
+        "Detail": "New York Life has been named one of the 2023 Best Companies for Multicultural Women by Seramount. <a href=\"https://seramount.com/best-companies/2023-best-companies-for-multicultural-women-winners/\" class=\"blue-selection\" target=\"_blank\">https://seramount.com/best-companies/2023-best-companies-for-multicultural-women-winners/</a>"
+      },
+      {
+        "Source": "Facebook",
+        "Detail": "We are proud to be named a Disability Equality Index (DEI) #BestPlaceToWork for #DisabilityInclusion by Disability:IN American Association of People with Disabilities. This recognition highlights the work we continue to do to include people with disabilities. <a href=\"https://disabilityin.org/what-we-do/disability-equality-index/2023companies/\" class=\"blue-selection\" target=\"_blank\">https://disabilityin.org/what-we-do/disability-equality-index/2023companies/</a>"
+      },
+      {
+        "Source": "Facebook",
+        "Detail": "We are pleased to announce that our Chief Diversity Officer, Jomil Guerrero, has been included in PoliticsNY's inaugural list of Power Players in Diversity, Equity, and Inclusion. Follow the link to learn how Jomil Guerrero defines DE&I, what the benefits are in promoting DE&I in the workplace, and what motivated her to become an advocate."
+      },
+      {
+        "Source": "Facebook",
+        "Detail": "Ken Drinkard, Senior Vice President, New York Life, has earned the prestigious 2023 Veteran Leadership Award from Profiles in Diversity Journal. Ken shares how the skills he acquired in the U.S. Army have translated into his remarkable career today. Read more here."
+      },
+      {
+        "Source": "Facebook",
+        "Detail": "Congratulations to Jomil Guerrero, Chief Diversity Officer, for her well-deserved recognition by the New York Women of ALPFA (WOA) and for receiving the prestigious Making an Impact in Diversity, Equity, and Inclusion (DEI) 2023 Award. This award further highlights Jomil's commitment to encouraging a culture of openness, equality, growth, and trust throughout the New York Life organization."
+      },
+      {
+        "Source": "Facebook",
+        "Detail": "At New York Life, we're proud of the work we've done to advance DE&I in the workplace and have been named to Seramount\u2019s 2023 Inclusion index for our efforts! Read more about our best practices here: <a href=\"https://seramount.com/best-companies/2023-inclusion-index-organizations\" class=\"blue-selection\" target=\"_blank\">https://seramount.com/best-companies/2023-inclusion-index-organizations</a>/ #InclusionIndex2023"
+      },
+      {
+        "Source": "Facebook",
+        "Detail": "Amanda Kuhl Sarrubbo, Senior Vice President, New York Life, was recognized by Profiles in Diversity Journal as one of 2023's Women Worth Watching in Leadership. Learn how Amanda found success as a leader by being her authentic self, creating mentorship opportunities, and cultivating strong relationships."
+      },
+      {
+        "Source": "Facebook",
+        "Detail": "The #NYLFoundation will award 40 grants totaling $1.8M to afterschool and summer programs nationwide through the 2024 Aim High grant competition. Programs can apply to one of four Aim High grant opportunities ranging from $15k to $100k. Grants will support the transition to high school, as well as racial equity, social justice, and youth entrepreneurship efforts. Apply by February 1st: 3to6.co/AimHigh"
+      },
+      {
+        "Source": "FocusArea",
+        "Detail": " New York Life Insurance Company is leveraging artificial intelligence (AI) and machine learning (ML) to enhance its underwriting processes and improve overall customer service. The company is developing a hybrid AI approach that integrates electronic health record (EHR) data with traditional underwriting expertise. \n\nThis system allows for the creation of data science models focused on mortality, which provide initial assessments that underwriters can refine using additional information. This collaboration between AI and human underwriters ensures transparency and accuracy in risk assessment, moving away from \"black box\" models.\n\nFurthermore, New York Life is exploring the use of generative AI to enhance various operational aspects, including underwriting, customer service, and recruitment. By digitizing the underwriting process, the company has significantly reduced the time required for decisions, transforming what was once a multi-week process into one that can yield results in just days or hours. \n\nThis focus on AI not only streamlines operations but also supports New York Life's commitment to providing personalized and effective service to its clients, ultimately enhancing the overall customer experience.\n"
+      }
+    ]
+  },
+  {
+    "question": "What are the top 5 most common industries in the database? (CompanyInfo, LookUpValue)",
+    "sql_query": "SELECT TOP 5 l.Value, COUNT(c.Id) AS CompanyCount FROM CompanyInfo c JOIN LookUpValue l ON c.Industry = l.Id WHERE c.Industry IS NOT NULL GROUP BY l.Value ORDER BY CompanyCount DESC;",
+    "summary": "The top 5 most common industries are led by Manufacturing-Industrial Products with 8786 companies, followed by Construction with 4557 companies, and Business Services with 4187 companies.",
+    "raw_data": [
+      {
+        "Value": "Manufacturing-Industrial Products",
+        "CompanyCount": 8786
+      },
+      {
+        "Value": "Construction",
+        "CompanyCount": 4557
+      },
+      {
+        "Value": "Business Services",
+        "CompanyCount": 4187
+      },
+      {
+        "Value": "Retail",
+        "CompanyCount": 4105
+      },
+      {
+        "Value": "Retail Banking",
+        "CompanyCount": 3471
+      }
+    ]
+  },
+  {
+    "question": "Calculate the average deal value for the top 5 vendors. (CompanyDealMaster)",
+    "sql_query": "SELECT TOP 5 VendorParent, AVG(ServiceContractValue) AS AverageDealValue FROM CompanyDealMaster GROUP BY VendorParent ORDER BY AverageDealValue DESC;",
+    "summary": "The top vendors' average deal values range significantly, with R1 RCM at $10 billion, US Department of Defense at $4.5 billion, and Cigna at $4.3 billion.",
+    "raw_data": [
+      {
+        "VendorParent": "R1 RCM",
+        "AverageDealValue": 10000000000
+      },
+      {
+        "VendorParent": "US Department of Defense",
+        "AverageDealValue": 4500000000
+      },
+      {
+        "VendorParent": "Cigna",
+        "AverageDealValue": 4300000000
+      },
+      {
+        "VendorParent": "Red River Computer",
+        "AverageDealValue": 4188136024
+      },
+      {
+        "VendorParent": "AAR",
+        "AverageDealValue": 3825000000
+      }
+    ]
+  },
+  {
+    "question": "Which 5 companies have the most IT partners listed? (CompanyITPartnerDetail, CompanyInfo)",
+    "sql_query": "SELECT TOP 5 ci.Name, COUNT(cpd.Id) AS PartnerCount FROM CompanyITPartnerDetail AS cpd JOIN CompanyInfo AS ci ON cpd.CompanyInfoId = ci.Id GROUP BY ci.Name ORDER BY PartnerCount DESC;",
+    "summary": "Cornerstone leads with 126 IT partners, followed by Amazon Web Services, Inc. with 92, and Microsoft Corporation and Alphabet Inc. each with 89 partners.",
+    "raw_data": [
+      {
+        "Name": "Cornerstone",
+        "PartnerCount": 126
+      },
+      {
+        "Name": "Amazon Web Services, Inc.",
+        "PartnerCount": 92
+      },
+      {
+        "Name": "Microsoft Corporation",
+        "PartnerCount": 89
+      },
+      {
+        "Name": "Alphabet Inc.",
+        "PartnerCount": 89
+      },
+      {
+        "Name": "Salesforce Inc",
+        "PartnerCount": 87
+      }
+    ]
+  }
+]
